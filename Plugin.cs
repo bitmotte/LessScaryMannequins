@@ -1,6 +1,9 @@
-﻿using BepInEx;
+﻿using System.IO;
+using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace LessScaryMannequins;
 
@@ -17,5 +20,11 @@ public class Plugin : BaseUnityPlugin
 
         var harmony = new Harmony(MyPluginInfo.PLUGIN_GUID);
         harmony.PatchAll();
+        SceneManager.sceneLoaded += OnSceneLoad;
+    }
+
+    void OnSceneLoad(Scene scene, LoadSceneMode mode)
+    {
+        AssetLoader.Load();   
     }
 }
