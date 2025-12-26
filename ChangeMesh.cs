@@ -6,17 +6,19 @@ public static class ChangeMesh
 {
     public static void Change(GameObject mannequin)
     {
-        GameObject mannequinRenderObject = mannequin.transform.GetChild(0).GetChild(1).gameObject;
-        mannequinRenderObject.GetComponent<SkinnedMeshRenderer>().enabled = false;
-        
-        GameObject newMesh = GameObject.Instantiate(new GameObject(), mannequinRenderObject.transform);
-        
-        newMesh.AddComponent<MeshRenderer>();
-        MeshFilter filter = newMesh.AddComponent<MeshFilter>();
-        filter.mesh = MeshMaker.CreateCubeMesh();
+        Object.Destroy(mannequin.transform.GetChild(0).gameObject);
 
-        newMesh.transform.localScale = new Vector3(.01f, .01f, .02f);
-        newMesh.transform.localPosition = new Vector3(0f, 0f, 0.01f);
+        GameObject copy = Object.Instantiate(AssetLoader.CopyTemplate, mannequin.transform);
+        GameObject copyMesh = copy.transform.GetChild(0).gameObject;
+        copyMesh.transform.parent = mannequin.transform;
+        copyMesh.transform.localScale = new Vector3(3.2f,3.2f,3.2f);
+
+        Animator copyController = copy.GetComponent<Animator>();
+        Animator mannequinController = mannequin.GetComponent<Animator>();
+        mannequinController.avatar = copyController.avatar;
+        mannequinController.runtimeAnimatorController = copyController.runtimeAnimatorController;
+
+        Object.Destroy(copy);
     }
 
     public static void DestroyQuinn(GameObject mannequin)
