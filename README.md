@@ -1,9 +1,9 @@
+
+# Notice : Less Scary Mannequins will be on hiatus until fraud + the enemy rewrite comes out. . . thank you. . .
 # Less Scary Mannequins
 Replaces the mannequin model with a less scary alternative. . .
 This mod was hastily constructed. . . the new model is a pink box currently.
 I will soon replace it with a proper model. . . Thank you. . .
-
-# Notice : Less Scary Mannequins will be on hiatus until fraud + the enemy rewrite comes out. . . thank you. . .
 
 Unity project where test and assetbundle is made : https://github.com/bitmotte/LessScaryBundle
 
